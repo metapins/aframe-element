@@ -1,0 +1,33 @@
+{
+  "root": "libs/aframe-element",
+  "sourceRoot": "libs/aframe-element/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/aframe-element",
+        "main": "libs/aframe-element/src/index.ts",
+        "tsConfig": "libs/aframe-element/tsconfig.lib.json",
+        "assets": ["libs/aframe-element/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/aframe-element/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/aframe-element"],
+      "options": {
+        "jestConfig": "libs/aframe-element/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["aframe-element"]
+}

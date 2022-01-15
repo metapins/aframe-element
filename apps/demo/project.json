@@ -10,7 +10,7 @@
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/apps/demo",
-        "compiler": "babel",
+        "compiler": "swc",
         "index": "apps/demo/src/index.html",
         "baseHref": "/",
         "main": "apps/demo/src/main.ts",

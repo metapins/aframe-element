@@ -1,0 +1,20 @@
+{
+  "name": "@metapins/aframe-element",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "license": "MIT",
+  "homepage": "https://github.com/metapins/aframe-element",
+  "repository": {
+    "url": "https://github.com/metapins/aframe-element.git",
+    "type": "git"
+  },
+  "author": {
+    "name": "Marc Buils",
+    "email": "marc.buils@marcbuils.fr",
+    "url": "https://www.linkedin.com/in/marcbuils/"
+  },
+  "peerDependencies": {
+    "aframe": "^1.2.0",
+    "lit": "^2.1.1"
+  }
+}
