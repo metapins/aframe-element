@@ -1,94 +1,141 @@
+# @metapins/aframe-element
 
+aframe-element is a library inspired from very nice library [Polymer lit](https://lit.dev/) to create [A-Frame](https://aframe.io/) 3D components.  
+Used with [@metapins/lit-observable](https://github.com/metapins/lit-observable), you can create simple, fast and reactive WebXR components.
 
-# AframeElement
+## Installation
 
-This project was generated using [Nx](https://nx.dev).
+Use the package manager [npm](https://www.npmjs.com/package/@metapins/aframe-element) to install aframe-element.
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+```bash
+npm install @metapins/aframe-element
+```
 
-🔎 **Smart, Fast and Extensible Build System**
+## Usage
 
-## Adding capabilities to your workspace
+### By component
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+```typescript
+import { customElement, AFrameElement } from '@metapins/aframe-element';
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+@customElement('my-3d-element')
+exports My3dElement extends AFrameElement {
+  render() {
+    return html`
+      <a-entity text="value: Hello World;"></a-entity>
+    `;
+  }
+}
+```
 
-Below are our core plugins:
+```html
+<a-scene>
+  <my-3d-element></my-3d-element>
+</a-scene>
+```
 
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+### By attribute and with parameters
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+```typescript
+import { customElement, AFrameElement } from '@metapins/aframe-element';
 
-## Generate an application
+@customElement('my-text-element')
+exports MyTextElement extends AFrameElement {
+  static schema: {
+    text: { type: 'string' },
+  }
 
-Run `nx g @nrwl/react:app my-app` to generate an application.
+  render() {
+    return html`
+      <a-entity text="value: ${this.data.text};"></a-entity>
+    `;
+  }
+}
+```
 
-> You can use any of the plugins above to generate applications as well.
+```html
+<a-scene>
+  <a-entity my-text-element="text: Hello World;"></a-entity>
+</a-scene>
+```
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+### With an aframe event
 
-## Generate a library
+```typescript
+import { customElement, AFrameElement } from '@metapins/aframe-element';
 
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
+@customElement('my-3d-element')
+exports My3dElement extends AFrameElement {
+  init() {
+    console.log('component initilized', this.el);
+  }
 
-> You can also use any of the plugins above to generate libraries as well.
+  render() {
+    return html`
+      <a-entity text="value: Hello World;"></a-entity>
+    `;
+  }
+}
+```
 
-Libraries are shareable across libraries and applications. They can be imported from `@aframe-element/mylib`.
+```html
+<a-scene>
+  <my-3d-element></my-3d-element>
+</a-scene>
+```
 
-## Development server
+# With @metapins/lit-observable and rxjs
 
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+```typescript
+import { customElement, AFrameElement } from '@metapins/aframe-element';
 
-## Code scaffolding
+@customElement('pawn')
+export class PawnElement extends AFrameElement {
+  private background$ = new BehaviorSubject<string>('grey');
 
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
+  render() {
+    return html`
+      <a-box
+        scale="1 1 0.1"
+        material="color: ${observe(this.background$)}"
+        @mouseenter=${() => this.background$.next('white')}
+        @mouseleave=${() => this.background$.next('grey')}
+      ></a-box>
+    `;
+  }
+}
+```
 
-## Build
+```html
+<a-scene cursor="rayOrigin: mouse;  fuse: false;">
+  <my-3d-element></my-3d-element>
+</a-scene>
+```
 
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+More information about @metapins/lit-observable [here](https://github.com/metapins/lit-observable)
 
-## Running unit tests
+## Example
 
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
+### Tictactoe with rxjs
 
-Run `nx affected:test` to execute the unit tests affected by a change.
+- Demo: https://aframe-element-demo.herokuapp.com/
+- Source code: https://github.com/metapins/aframe-element/blob/master/apps/demo/src/app/app.element.ts
 
-## Running end-to-end tests
+### Puissance4 with network playing & @vaadin/router & redux
 
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
+- Demo: https://puissance4-aframe.herokuapp.com/
+- Source code: https://github.com/metapins/aframe-puissance4
 
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
+The owner of the multiplayer game is the first to open the link (player yellow). Next users to open the demo are red.
 
-## Understand your workspace
+*Tips: You can open 2 tabs on the same browser to test multiplayer mode.*
 
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
+## Contributing
 
-## Further help
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Visit the [Nx Documentation](https://nx.dev) to learn more.
+Please make sure to update tests as appropriate.
 
+## License
 
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+[MIT](https://choosealicense.com/licenses/mit/)
