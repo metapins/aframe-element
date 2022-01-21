@@ -1,6 +1,6 @@
 # @metapins/aframe-element
 
-aframe-element is a library inspired from very nice library [Polymer lit](https://lit.dev/) to create [A-Frame](https://aframe.io/) 3D components.  
+aframe-element is a library inspired from very nice library [Polymer lit](https://lit.dev/) to create [A-Frame](https://aframe.io/) AR / VR / 3D components.  
 Used with [@metapins/lit-observable](https://github.com/metapins/lit-observable), you can create simple, fast and reactive WebXR components.
 
 ## Installation
