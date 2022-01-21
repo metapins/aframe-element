@@ -1,6 +1,6 @@
 {
   "name": "aframe-element",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "scripts": {
     "start": "serve ./dist/apps/demo/",
