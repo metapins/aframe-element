@@ -10,14 +10,7 @@
         "outputPath": "dist/libs/aframe-element",
         "main": "libs/aframe-element/src/index.ts",
         "tsConfig": "libs/aframe-element/tsconfig.lib.json",
-        "assets": [
-          "*.md",
-          {
-            "input": "docs",
-            "glob": "**/*",
-            "output": "docs"
-          }
-        ]
+        "assets": ["*.md"]
       }
     },
     "lint": {
