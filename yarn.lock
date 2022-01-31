@@ -1764,7 +1764,15 @@
     "@types/semver" "^7.3.9"
     ts-type "^2.1.4"
 
-"@types/animejs@^3.1.4":
+"@types/aframe@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@types/aframe/-/aframe-1.2.0.tgz#f3fc30a39a11a2bf16bb983cb205e7be0a4fbd73"
+  integrity sha512-hlqxbAkrGZftxTSaa0Phwfsi3mAxR/ND8o1sMQqefEbRPhxqaShe1ilFWQQb/2OYkJneWbUOAxsQLGxYAMPH+g==
+  dependencies:
+    "@types/animejs" "*"
+    "@types/three" "*"
+
+"@types/animejs@*":
   version "3.1.4"
   resolved "https://registry.yarnpkg.com/@types/animejs/-/animejs-3.1.4.tgz#92f90d1c800b9041b64a7da9da0e68e690146b0e"
   integrity sha512-WUjeFT2SXd6intfE6cg6eL1jk/JL88JqM2gC4WqO4iHLmbCvHUq6aoLK13lGpDWs4FtS2PHoYraJZ0dEx99Dyg==
@@ -2047,10 +2055,10 @@
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-2.0.1.tgz#20f18294f797f2209b5f65c8e3b5c8e8261d127c"
   integrity sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==
 
-"@types/three@^0.136.1":
-  version "0.136.1"
-  resolved "https://registry.yarnpkg.com/@types/three/-/three-0.136.1.tgz#030fc01cdc5ce82cad93db17b94a24515cb4b50e"
-  integrity sha512-gzTw6RR4dU8sGf+RpLBWWKHRVIJ4gwKVQPk+IFCgha04Efg/itXYUalX6iBcYeSmaDu0qE5M7uTq0XLQpU4FAg==
+"@types/three@*":
+  version "0.137.0"
+  resolved "https://registry.yarnpkg.com/@types/three/-/three-0.137.0.tgz#6047e0658262b4de7c464a40288f9071ddd9a6d5"
+  integrity sha512-Xc5EAlfYmgrCLI/VlSVqiRJAtzhWF0Rw2jSq48nqJy+Hcb5sfDOXyfZn1+RNcHyi9l8CeCAXCZygO8IyeOJVEA==
 
 "@types/trusted-types@^2.0.2":
   version "2.0.2"
