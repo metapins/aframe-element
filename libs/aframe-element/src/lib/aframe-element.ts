@@ -13,6 +13,8 @@ import { Camera } from 'three';
 
 export class AFrameElement {
   public static schema: any = {};
+  public static dependencies: string[] = [];
+  public static multiple = false;
 
   public __AFRAME_INSTANCE__: any;
 
@@ -89,6 +91,12 @@ export const customElement = (elementName: string) => (ElementClass: any) => {
   const aFrameElementDefinition = {
     get schema() {
       return ElementClass.schema;
+    },
+    get dependencies() {
+      return ElementClass.dependencies;
+    },
+    get multiple() {
+      return ElementClass.multiple;
     },
     init: function (data?: any): void {
       getInstance(this).init(data);
