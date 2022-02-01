@@ -36,7 +36,32 @@ exports My3dElement extends AFrameElement {
 </a-scene>
 ```
 
-### By attribute and with parameters
+### With parameters
+
+```typescript
+import { customElement, AFrameElement } from '@metapins/aframe-element';
+
+@customElement('my-text-element')
+exports MyTextElement extends AFrameElement {
+  static schema: {
+    text: { type: 'string' },
+  }
+
+  render() {
+    return html`
+      <a-entity text="value: ${this.data.text};"></a-entity>
+    `;
+  }
+}
+```
+
+```html
+<a-scene>
+  <a-my-text-element _text="Hello World"></a-my-text-element>
+</a-scene>
+```
+
+### By attribute
 
 ```typescript
 import { customElement, AFrameElement } from '@metapins/aframe-element';

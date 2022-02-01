@@ -1,8 +1,8 @@
 import { AFrameElement, customElement } from '@metapins/aframe-element';
 import { observe } from '@metapins/lit-observe';
 import 'aframe';
-import 'aframe-environment-component';
 import 'aframe-blink-controls';
+import 'aframe-environment-component';
 import { html, LitElement, TemplateResult } from 'lit';
 import { customElement as customLitElement } from 'lit/decorators.js';
 import { BehaviorSubject, firstValueFrom, map } from 'rxjs';
@@ -73,19 +73,19 @@ export class AppElement extends LitElement {
         </a-entity>
 
         <!-- line 1 -->
-        <a-entity pawn="line: 0; column: 0;" position="-1.1 2.8 0"></a-entity>
-        <a-entity pawn="line: 0; column: 1;" position="0 2.8 0"></a-entity>
-        <a-entity pawn="line: 0; column: 2;" position="1.1 2.8 0"></a-entity>
+        <a-pawn _line="0" _column="0" position="-1.1 2.8 0"></a-pawn>
+        <a-pawn _line="0" _column="1" position="0 2.8 0"></a-pawn>
+        <a-pawn _line="0" _column="2" position="1.1 2.8 0"></a-pawn>
 
         <!-- line 2 -->
-        <a-entity pawn="line: 1; column: 0;" position="-1.1 1.7 0"></a-entity>
-        <a-entity pawn="line: 1; column: 1;" position="0 1.7 0"></a-entity>
-        <a-entity pawn="line: 1; column: 2;" position="1.1 1.7 0"></a-entity>
+        <a-pawn _line="1" _column="0" position="-1.1 1.7 0"></a-pawn>
+        <a-pawn _line="1" _column="1" position="0 1.7 0"></a-pawn>
+        <a-pawn _line="1" _column="2" position="1.1 1.7 0"></a-pawn>
 
         <!-- line 3 -->
-        <a-entity pawn="line: 2; column: 0;" position="-1.1 0.6 0"></a-entity>
-        <a-entity pawn="line: 2; column: 1;" position="0 0.6 0"></a-entity>
-        <a-entity pawn="line: 2; column: 2;" position="1.1 0.6 0"></a-entity>
+        <a-pawn _line="2" _column="0" position="-1.1 0.6 0"></a-pawn>
+        <a-pawn _line="2" _column="1" position="0 0.6 0"></a-pawn>
+        <a-pawn _line="2" _column="2" position="1.1 0.6 0"></a-pawn>
 
         <a-sphere
           class="clickable"
@@ -111,6 +111,7 @@ export class PawnElement extends AFrameElement {
   );
 
   private onClick() {
+    console.log(this.data.line, this.data.column);
     tictactoeService.add(this.data.line, this.data.column);
   }
 
