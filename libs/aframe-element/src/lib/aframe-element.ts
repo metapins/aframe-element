@@ -16,6 +16,8 @@ export class AFrameElement {
   public static dependencies: string[] = [];
   public static multiple = false;
 
+  public static mappings: any = {};
+
   public __AFRAME_INSTANCE__: any;
 
   public init(data?: any): void {}
@@ -130,6 +132,14 @@ export const customElement = (elementName: string) => (ElementClass: any) => {
   registerPrimitive(`a-${elementName}`, {
     defaultComponents: {
       [elementName]: {},
+    },
+    get mappings() {
+      return Object.assign(
+        {},
+        ...Object.keys(ElementClass.schema).map((key) => ({
+          [`_${key}`]: `${elementName}.${key}`,
+        }))
+      );
     },
   });
 };
