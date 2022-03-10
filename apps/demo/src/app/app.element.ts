@@ -111,7 +111,6 @@ export class PawnElement extends AFrameElement {
   );
 
   private onClick() {
-    console.log(this.data.line, this.data.column);
     tictactoeService.add(this.data.line, this.data.column);
   }
 
